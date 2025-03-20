@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mohammed Hussain B - Portfolio</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            background: linear-gradient(135deg, #FFDDC1, #FFABAB); /* Peach color palette */
+            backdrop-filter: blur(10px);
+            scroll-behavior: smooth;
+        }
+
+        /* Profile Picture */
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid white;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Animated Text */
+        .animated-text {
+            font-size: 1.8rem;
+            margin-top: 10px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Buttons */
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            background: linear-gradient(45deg, #FFB7B2, #FF9A8B);
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background: linear-gradient(45deg, #FF9A8B, #FFB7B2);
+        }
+
+        /* Sections */
+        .content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .content.show {
+            display: block;
+            opacity: 1;
+        }
+
+        /* About Section */
+        #about p {
+            font-size: 1.2rem;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Skills Section */
+        .skill-container {
+            margin-top: 20px;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .skill-image {
+            width: 80px;
+            margin-bottom: 5px;
+        }
+
+        .skill-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .skills-list {
+            margin-top: 10px;
+        }
+
+        /* Education Section */
+        #education p {
+            font-size: 1.2rem;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: #FF9A8B;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Profile Section -->
+    <div class="profile-container">
+        <img src="Hussain.jpg" alt="Mohammed Hussain B" class="profile-photo" />
+        <h1 class="animated-text">I'm Mohammed Hussain B</h1>
+        <div class="buttons">
+            <button onclick="toggleSection('about')">About</button>
+            <button onclick="toggleSection('skills')">Skills</button>
+            <button onclick="toggleSection('education')">Education</button>
+            <button onclick="toggleSection('contact')">Contact</button>
+            
+            <!-- Download Button -->
+            <a href="./Resume.pdf" download>
+                <button>Download Portfolio</button>
+            </a>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div id="about" class="content">
+        <h2>About Me</h2>
+        <p>I am a Web Developer & UI/UX Designer</p>
+        <p>My Talent: Problem Solver</p>
+    </div>
+
+    <!-- Skills Section -->
+    <div id="skills" class="content">
+        <h2>My Skills</h2>
+        <div class="skill-container">
+            <img src="html.jpg" alt="HTML" class="skill-image" />
+            <div class="skill-name">HTML</div>
+            <div class="skills-list">HTML, CSS, JavaScript</div>
+        </div>
+        <div class="skill-container">
+            <img src="python.jpg" alt="Python" class="skill-image" />
+            <div class="skill-name">Python</div>
+            <div class="skills-list">Django, Flask</div>
+        </div>
+        <div class="skill-container">
+            <img src="java.jpg" alt="Java" class="skill-image" />
+            <div class="skill-name">Java</div>
+            <div class="skills-list">OOP, Spring Boot</div>
+        </div>
+    </div>
+
+    <!-- Education Section -->
+    <div id="education" class="content">
+        <h2>Education</h2>
+        <p>• Government Higher Secondary School, 2021 - SSLC</p>
+        <p>• Government Higher Secondary School, 2022 - HSC</p>
+        <p>• Government Arts and Science College, Avinashi (2023–2026) - B.Sc in Computer Science</p>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact" class="content contact-info">
+        <h2>Contact Me</h2>
+        <p>Email: <a href="mailto:itzhussain73@gmail.com">itzhussain73@gmail.com</a></p>
+        <p><a href="https://www.instagram.com/_im__ok____" target="_blank">Instagram</a></p>
+        <p><a href="https://www.linkedin.com/in/mohammed-hussain-243618357?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">LinkedIn</a></p>
+    </div>
+
+    <!-- JavaScript for Smooth Transitions -->
+    <script>
+        function toggleSection(id) {
+            let section = document.getElementById(id);
+            
+            // Close all other sections first
+            document.querySelectorAll('.content').forEach(el => {
+                if (el !== section) {
+                    el.style.opacity = '0';
+                    setTimeout(() => { el.style.display = 'none'; }, 500);
+                }
+            });
+
+            // Open the selected section
+            if (section.style.display === "block") {
+                section.style.opacity = '0';
+                setTimeout(() => { section.style.display = "none"; }, 500);
+            } else {
+                section.style.display = "block";
+                setTimeout(() => { section.style.opacity = '1'; }, 50);
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+
+
